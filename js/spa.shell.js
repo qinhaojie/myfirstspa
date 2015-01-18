@@ -38,7 +38,5 @@ spa.shell = (function() {
 
 	//--------------------------end public-----------------------------------------
 	return {
-		
-		initModule: initModule12
-	};
+		initModule: initModule
 })();
