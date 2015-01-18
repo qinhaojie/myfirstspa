@@ -1,0 +1,102 @@
+/* Welcome to Compass. Use this file to define print styles.
+* Import this file using the following HTML or equivalent:* <link href="/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" /> */
+/* line 3, ../sass/spa.shell.scss */
+.spa-shell-head, .spa-shell-logo, .spa-shell-acct, .spa-shell-search, .spa-shell-main, .spa-shell-main-nav, .spa-shell-main-content, .spa-shell-foot, .spa-shell-chat, .spa-shell-modal {
+  position: absolute;
+  transition: 3s;
+}
+
+/* line 7, ../sass/spa.shell.scss */
+.spa-shell-head {
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+}
+
+/* line 13, ../sass/spa.shell.scss */
+.spa-shell-logo {
+  top: 4px;
+  left: 4px;
+  height: 32px;
+  width: 128px;
+  background: orange;
+}
+
+/* line 20, ../sass/spa.shell.scss */
+.spa-shell-acct {
+  top: 4px;
+  right: 0px;
+  width: 64px;
+  height: 32px;
+  background: green;
+}
+
+/* line 27, ../sass/spa.shell.scss */
+.spa-shell-search {
+  top: 4px;
+  right: 64px;
+  width: 248px;
+  height: 32px;
+  background: blue;
+}
+
+/* line 34, ../sass/spa.shell.scss */
+.spa-shell-main {
+  top: 40px;
+  left: 0;
+  bottom: 40px;
+  right: 0;
+}
+
+/* line 40, ../sass/spa.shell.scss */
+.spa-shell-main-content, .spa-shell-main-nav {
+  top: 0;
+  bottom: 0;
+}
+
+/* line 44, ../sass/spa.shell.scss */
+.spa-shell-main-nav {
+  width: 250px;
+  background: #eee;
+}
+
+/* line 48, ../sass/spa.shell.scss */
+.spa-x-closed .spa-shell-main-nav {
+  width: 0;
+}
+
+/* line 51, ../sass/spa.shell.scss */
+.spa-shell-main-content {
+  left: 250px;
+  right: 0;
+  background: #ddd;
+}
+
+/* line 56, ../sass/spa.shell.scss */
+.spa-x-closed .spa-shell-main-content {
+  left: 0;
+}
+
+/* line 59, ../sass/spa.shell.scss */
+.spa-shell-foot {
+  bottom: 0;
+  right: 0;
+  width: 300px;
+  height: 15px;
+  background: red;
+  z-index: 1;
+}
+
+/* line 67, ../sass/spa.shell.scss */
+.spa-shell-modal {
+  margin-top: -200px;
+  margin-left: -200px;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  height: 400px;
+  background: #fff;
+  border-radius: 3px;
+  z-index: 2;
+}
