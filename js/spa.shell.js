@@ -89,43 +89,43 @@ spa.shell = (function() {
 
 	//切换chat显示状态  
 	toggleChat = function(dosth, callback) {
-			var
-				px_chat_ht = jqueryMap.$chat.height(),
-				is_open = px_chat_ht === configMap.chat_extend_height,
-				is_closed = px_chat_ht === configMap.chat_retract_height,
-				is_sliding = !is_open && !is_closed;
-			if (is_sliding) return false;
+		var
+			px_chat_ht = jqueryMap.$chat.height(),
+			is_open = px_chat_ht === configMap.chat_extend_height,
+			is_closed = px_chat_ht === configMap.chat_retract_height,
+			is_sliding = !is_open && !is_closed;
+		if (is_sliding) return false;
 
-			if (dosth) {
-				jqueryMap.$chat.animate({
-						height: configMap.chat_extend_height
-					},
-					configMap.chat_extend_time,
-					function() {
-						jqueryMap.$chat.attr('title', configMap.chat_extend_title);
-						stateMap.is_chat_retracted = false;
-						callback && callback(jqueryMap.$chat);
-					}
-				);
-				return true;
-			};
-
+		if (dosth) {
 			jqueryMap.$chat.animate({
-					height: configMap.chat_retract_height
+					height: configMap.chat_extend_height
 				},
-				configMap.chat_retract_time,
+				configMap.chat_extend_time,
 				function() {
-					jqueryMap.$chat.attr('title', configMap.chat_retract_title);
-					stateMap.is_chat_retracted = true;
+					jqueryMap.$chat.attr('title', configMap.chat_extend_title);
+					stateMap.is_chat_retracted = false;
 					callback && callback(jqueryMap.$chat);
 				}
 			);
 			return true;
+		};
+
+		jqueryMap.$chat.animate({
+				height: configMap.chat_retract_height
+			},
+			configMap.chat_retract_time,
+			function() {
+				jqueryMap.$chat.attr('title', configMap.chat_retract_title);
+				stateMap.is_chat_retracted = true;
+				callback && callback(jqueryMap.$chat);
+			}
+		);
+		return true;
 
 
-		}
-		//--------------------------end dom-----------------------------------------
-		//--------------------------event-----------------------------------------
+	};
+	//--------------------------end dom-----------------------------------------
+	//--------------------------event-----------------------------------------
 	onclickChat = function(e) {
 
 		/*if (toggleChat(stateMap.is_chat_retracted)) {
@@ -186,10 +186,14 @@ spa.shell = (function() {
 			.click(onclickChat);
 
 		$.uriAnchor.configModule({
-			schema_map : configMap.anchor_schema_map
+			schema_map: configMap.anchor_schema_map
 		});
+
+		spa.chat.configModule({});
+		spa.chat.initModule(jqueryMap.$chat);
+
 		$(window)
-			.bind('hashchange',onHashchange)
+			.bind('hashchange', onHashchange)
 			.trigger('hashchange');
 	};
 
